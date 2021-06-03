@@ -1,0 +1,26 @@
+        //Бинарный поиск
+        //Сложность алгоритма O=logn
+        public static int BinarySearch(int [] array, int searchVal)
+        {
+            int low = 0;
+            int hight = array.Length - 1;
+            int mid = 0;
+            while (low <= hight)
+            {
+                mid = hight + low / 2;
+                //Console.WriteLine(mid);
+                if (array[mid] == searchVal)
+                {
+                    return mid;
+                }
+                if (array[mid] > searchVal)
+                {
+                    hight = mid - 1;
+                }
+                else
+                {
+                    low = mid + 1;
+                }
+            }
+            return (-1);
+        }
