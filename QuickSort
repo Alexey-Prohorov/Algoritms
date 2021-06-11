@@ -23,19 +23,20 @@ namespace test
         }
 
 
-        static void QuickSort(int[] arr, int left, int right)
+        static void QuikcSort(int[] arr, int left, int right)
         {
             if (left<=right)
             {
                 int pivot = Partition(arr,left,right);
-                QuickSort(arr, left, pivot - 1);
-                QuickSort(arr, pivot + 1, right);
+                QuikcSort(arr, left, pivot - 1);
+                QuikcSort(arr, pivot + 1, right);
             }
         }
 
         static int Partition(int[] arr, int left, int right)
         {
             int pivot = arr[left];
+            Console.WriteLine("pivot:{0}     left:{1}             right:{2}", pivot,left,right );
             while (true)
             {
                 if (arr[left]<pivot)
@@ -46,13 +47,16 @@ namespace test
                 {
                     right--;
                 }
-                else if (left<right)
+                if (arr[left] == arr[right]) return right;
+                else if (left < right)
                 {
-                    if (arr[left] == arr[right]) return right;
-
-                    int temp = arr[left];
-                    arr[left] = arr[right];
-                    arr[right] = temp;
+                    if (arr[left] > arr[right])
+                    {
+                        Console.WriteLine("Меняем {0} на {1}", arr[left], arr[right]);
+                        int temp = arr[left];
+                        arr[left] = arr[right];
+                        arr[right] = temp;
+                    }
                 }
                 else
                 {
