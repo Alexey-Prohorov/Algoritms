@@ -11,20 +11,20 @@ static void Main(string[] args)
             allPermutation(s, 0, ch);
         }
 
-        static void allPermutation(string s, int idx, char[]ch)
+static void allPermutation(string s, int idx, char[]ch)
+{
+    if (idx == s.Length)
+    {
+        foreach (char c in ch)
         {
-            if (idx == s.Length)
-            {
-                foreach (char c in ch)
-                {
-                    Console.Write(c);
-                }
-                Console.WriteLine();
-                return;
-            }
-            for (int i = 0; i < s.Length; i++)
-            {
-                  ch[idx]=s[i];
-                  allPermutation(s, idx + 1, ch);
-            }
+            Console.Write(c);
         }
+        Console.WriteLine();
+        return;
+    }
+    for (int i = 0; i < s.Length; i++)
+    {
+          ch[idx]=s[i];
+          allPermutation(s, idx + 1, ch);
+    }
+}
