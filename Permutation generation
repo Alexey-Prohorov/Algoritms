@@ -1,0 +1,38 @@
+/*
+Генерация перестановок
+Вывести все последовательности чисел от 1 до n, в которых каждое число встречается ровно один раз. Такие последовательности
+называются перестановками.
+*/
+
+static void Main(string[] args)
+        {
+            string s = "12345";
+            char [] ch= new char[s.Length];
+            List<char> used = new List<char>();
+            allPermutation(s, 0, ch, used);
+
+        }
+
+        static void allPermutation(string s, int idx, char[]ch, List<char> used)
+        {
+            if (idx == s.Length)
+            {
+                foreach (char c in ch)
+                {
+                    Console.Write(c);
+                }
+                Console.WriteLine();
+                return;
+            }
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (used.Contains(s[i]))
+                {
+                    continue;
+                }
+                ch[idx]=s[i];
+                used.Add(s[i]);
+                allPermutation(s, idx + 1, ch, used);
+                used.Remove(s[i]);
+            }
+        }
