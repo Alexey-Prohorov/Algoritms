@@ -1,0 +1,24 @@
+        static void Main(string[] args)
+        {
+            string s = "abcdv";
+            char [] ch= new char[s.Length];
+            allPermutation(s, 0, ch);
+        }
+
+        static void allPermutation(string s, int idx, char[]ch)
+        {
+            if (idx == s.Length)
+            {
+                foreach (char c in ch)
+                {
+                    Console.Write(c);
+                }
+                Console.WriteLine();
+                return;
+            }
+            for (int i = 0; i < s.Length; i++)
+            {
+                  ch[idx]=s[i];
+                  allPermutation(s, idx + 1, ch);
+            }
+        }
